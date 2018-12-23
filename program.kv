@@ -1,0 +1,94 @@
+#: import main theprogram
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+#: import ListItemButton kivy.uix.listview.ListItemButton
+
+TeamDB:
+
+<TeamDB>:
+	orientation: "vertical"
+	first_team_text_input: first_team
+	second_team_text_input: second_team
+	win_team: winning_team
+	win_chance: winning_chance
+	first_score: first_team_score
+	second_score: second_team_score
+	team_search: search_teams
+	team_list: team_list_view
+	padding: 10
+	spacing: 10
+	
+	BoxLayout:
+		size_hint_y: None
+		height: "30dp"
+
+		Label:
+			text: "First Team:"
+		Label:
+			id: first_team
+
+		Label:
+			text: "Second Team:"
+		Label:
+			id: second_team
+
+		
+	BoxLayout:
+		size_hint_y: None
+		height: "30dp"
+		Label:
+			text: "Winning Team:"
+		Label:
+			id: winning_team
+		Label:
+			text: "Chance of Victory:"
+		Label:
+			id: winning_chance
+	BoxLayout:
+		size_hint_y: None
+		height: "30dp"
+		Label:
+			text: "First Team Score:"
+		Label:
+			id: first_team_score
+		Label:
+			text: "Second Team Score:"
+		Label:
+			id: second_team_score
+	
+	BoxLayout:
+		size_hint_y: None
+		height: "40dp"
+		
+		Button:
+			text: "Select First Team"
+			size_hint_x: 15
+			on_press: root.choose_first_team()
+		
+		Button:
+			text: "Select Second Team"
+			size_hint_x: 15
+			on_press: root.choose_second_team()
+
+		Button:
+			text: "Run Program"
+			size_hint_x: 15
+			on_press: root.run_program()
+	BoxLayout:
+		size_hint_y: None
+		height: "40dp"
+		TextInput:
+			size_hint_x: 10
+			id: search_teams
+		Button:
+			text: "Search For Team"
+			size_hint_x: 10
+			on_press: root.search_for_teams()
+	ListView:
+		id: team_list_view
+		adapter:
+			ListAdapter(data=[], cls=main.TeamListButton)
+		
+
+
+
+
